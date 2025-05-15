@@ -11,7 +11,7 @@ def hotkey():
 
 
 def main():
-    keyboard.add_hotkey('ctrl+shift+v', hotkey)
+    keyboard.add_hotkey('ctrl+alt+v', hotkey)
     keyboard.wait()
 
 
