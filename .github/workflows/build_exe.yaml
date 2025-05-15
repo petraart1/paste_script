@@ -18,10 +18,16 @@ jobs:
         run: pip install pyinstaller
       - name: Build EXE
         run: |
-          pyinstaller --onefile --windowed --clean --noconfirm \
-            --hidden-import=нужные_модули \  # Например: pandas, numpy, PyQt5.QtCore
-            --add-data="data/*;data" \       # Если есть данные
-            --add-data="images/*;images" \   # Если есть картинки
+          pyinstaller `
+            --onefile `
+            --windowed `
+            --clean `
+            --noconfirm `
+            --hidden-import=pandas `
+            --hidden-import=numpy `
+            --hidden-import=PyQt5.QtCore `
+            --add-data="data/*;data" `
+            --add-data="images/*;images" `
             main.py
       - name: Upload EXE
         uses: actions/upload-artifact@v4
