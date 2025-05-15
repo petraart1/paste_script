@@ -1,20 +1,20 @@
-name: paste
+name: Build EXE
 on: [push]
 jobs:
   build:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - name: Install PyInstaller
         run: pip install pyinstaller
-      - name: paste
-        run: pyinstaller --onefile --windowed ваша_программа.py
+      - name: Build EXE
+        run: pyinstaller --onefile --windowed main.py
       - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4  # Важно: v4 вместо v2!
         with:
           name: exe-file
-          path: dist/ваша_программа.exe
+          path: dist/main.exe
